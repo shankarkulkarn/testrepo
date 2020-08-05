@@ -1,0 +1,23 @@
+<div class="jumbotron">
+  <table class="table table-hover">
+    <tbody>
+       <tr>
+         <th>Book Id</th>
+         <th>Book Title </th>
+         <th>Year </th>
+         <th>Author</th>
+
+       </tr>
+ <tr  *ngFor="let book of observable | async">
+      <td>{{book.id}}</td>
+      <td>{{book.title}}</td>
+      <td>{{book.year}}</td>
+      <a routerLink="/info/{{book.title}}"><td>{{book.author}}</td></a>
+ </tr>
+
+
+    </tbody>
+
+</table>
+
+</div>
