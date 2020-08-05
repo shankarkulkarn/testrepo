@@ -8,8 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name="product_tbl")
+@DynamicUpdate
 public class Product {
 
 	@Id

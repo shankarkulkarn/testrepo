@@ -1,5 +1,6 @@
 package com.cg.pms.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,56 @@ public class ProductServiceImpl implements ProductService {
 		}
 		
 		return product;
+	}
+
+	@Override
+	public Product createProduct(Product product) throws ProductException {
+		
+		productDao.saveAndFlush(product); 
+		
+		return product ;
+	}
+
+	@Override
+	public Product updateProduct(Product product) throws ProductException {
+		
+		 if( productDao.existsById(product.getProductId()))
+		 {
+         productDao.saveAndFlush(product); 
+		 }
+		 else
+		 {
+			 throw new ProductException(product.getProductId()+" ID NOT FOUND");
+		 }
+		 return product ;
+	}
+
+	@Override
+	public Product deleteProductById(int productId) throws ProductException {
+		
+		  Optional<Product> optional = productDao.findById(productId);
+		  Product product =null ;
+		  if(optional.isPresent())
+		  {
+			  product = optional.get();
+			  productDao.deleteById(productId);
+		  }
+		  else
+		  {
+			  throw new ProductException(productId +" ID NOT FOUND");
+		  }
+		  return product ;
+	}
+
+	@Override
+	public List<Product> listAllProducts() throws ProductException {
+		
+		List<Product> list = productDao.findAll();
+		if(list.isEmpty())
+		{
+			 throw new ProductException("Empty Record ");
+		}
+		return list;
 	}
 
 }
