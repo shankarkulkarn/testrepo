@@ -15,7 +15,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	ProductDao  productDao ;
-	
+	static String message=" ID NOT FOUND";
 	@Override
 	public Product findProductById(int productId) throws ProductException {
 		
@@ -23,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
 		
 		if(product == null )
 		{
-			throw new ProductException(productId+" ID NOT FOUND");
+			throw new ProductException(productId+message);
 		}
 		
 		return product;
@@ -46,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
 		 }
 		 else
 		 {
-			 throw new ProductException(product.getProductId()+" ID NOT FOUND");
+			 throw new ProductException(product.getProductId()+message);
 		 }
 		 return product ;
 	}
@@ -58,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
 		  
 		if(product == null )
 		  {
-			  throw new ProductException(productId +" ID NOT FOUND");
+			  throw new ProductException(productId +message);
 		  }
 		  return product ;
 	}
