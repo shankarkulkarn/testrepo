@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.pms.entity.Product;
@@ -24,7 +25,7 @@ import com.cg.pms.exception.ProductException;
 import com.cg.pms.service.ProductService;
 
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins="http://localhost:4200")
 public class ProductController {
 
 	@Autowired
@@ -64,6 +65,7 @@ return re;
 		ResponseEntity<Product>  re = new ResponseEntity<Product>(p,HttpStatus.OK);
 		return re;
 	}
+	
 	
 	@GetMapping("product")
 	public ResponseEntity<List<Product>> findAllProduct() throws ProductException

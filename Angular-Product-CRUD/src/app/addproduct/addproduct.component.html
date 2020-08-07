@@ -1,0 +1,21 @@
+
+<div class="jumbotron">
+
+  <form #productform="ngForm" novalidate>
+
+      <div class="form-group">
+        <label for="productName">Enter Product Name </label>
+        <input  [(ngModel)]="product.productName" type="text"  class="form-control" name="productName"  id="productName" required>
+      </div>
+
+      <div class="form-group">
+          <label for="price">Enter Product Price  </label>
+          <input [(ngModel)]="product.price" type="number"  class="form-control" name="price"  id="price" required>
+      </div>
+    <button    (click)="add()" [disabled]="!productform.form.valid"    type="submit" class="btn btn-primary">Add Product  </button>
+
+    </form>
+<div *ngIf="productId > 0" class="alert alert-primary">
+   Product  Id =   {{productId}}
+</div>
+</div>
