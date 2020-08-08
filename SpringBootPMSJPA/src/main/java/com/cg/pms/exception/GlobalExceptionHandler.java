@@ -27,6 +27,18 @@ public class GlobalExceptionHandler {
 		 return re;
 	}
 	
+	@ExceptionHandler(LoginException.class)
+	public ResponseEntity<ErrorInfo> handleException(LoginException ex,HttpServletRequest req)
+	{
+		
+		 String message=ex.getMessage();
+		 String uri= req.getRequestURI();
+		 
+		 ErrorInfo  obj = new ErrorInfo(LocalDateTime.now(),message,uri);
+		 ResponseEntity<ErrorInfo>  re = new ResponseEntity<ErrorInfo>(obj,HttpStatus.NOT_FOUND);
+		 return re;
+	}
+	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorInfo>  handleException(Exception ex,HttpServletRequest req)
 	{
