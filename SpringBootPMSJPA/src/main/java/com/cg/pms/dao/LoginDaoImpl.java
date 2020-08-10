@@ -36,4 +36,21 @@ public class LoginDaoImpl implements LoginDao {
 		 return login;
 	}
 
+	@Override
+	public Login create(Login login) throws LoginException {
+		
+		entityManager.persist(login);
+		
+		return login;
+	}
+
+	@Override
+	public Login findUser(String userName) throws LoginException {
+		
+		
+		Login login = entityManager.find(Login.class,userName);
+		
+		return login;
+	}
+
 }

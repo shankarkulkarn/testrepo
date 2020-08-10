@@ -24,4 +24,20 @@ public class LoginServiceImpl implements LoginService {
 		return login.getUserRole();
 	}
 
+	@Override
+	public Login create(Login login) throws LoginException {
+		
+		Login user = loginDao.findUser(login.getUserName());
+		
+		if(user != null)
+		{
+			throw new LoginException("USER ALREADY EXIST");
+		}
+		else
+		{
+			user = loginDao.create(login);
+		}
+		return user;
+	}
+
 }
