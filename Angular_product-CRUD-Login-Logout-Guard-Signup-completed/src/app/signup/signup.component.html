@@ -1,0 +1,19 @@
+<div class="jumbotron">
+  <form>
+
+      <div class="form-group">
+      <label for="user">Enter User Name</label>
+      <input  [(ngModel)]="login.userName" type="text"   name="user" id="user" class="form-control" >
+      </div>
+
+      <div class="form-group">
+        <label for="pass">Enter PassWord </label>
+        <input  [(ngModel)]="login.userPass" type="password" name="pass" id="pass" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="role">Enter Role </label>
+        <input  [(ngModel)]="login.userRole" type="text" name="role" id="role" class="form-control">
+      </div>
+    <button   (click)="signup()" type="submit">Signup</button>
+  </form>
+</div>
