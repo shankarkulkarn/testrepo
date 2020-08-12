@@ -23,6 +23,8 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 	
+	
+	
 	@GetMapping("login/validate/{user}/{pass}")
 	public ResponseEntity<String> validate(@PathVariable("user") String userName,
 			@PathVariable("pass") String userPass) throws LoginException
